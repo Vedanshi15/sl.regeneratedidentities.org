@@ -1,0 +1,86 @@
+.form-text {
+  font-size: 2vh !important;
+}
+
+input {
+  left: auto !important;
+  position: relative !important;
+}
+
+input[type=radio] {
+  height: 2vh !important;
+  width: 2vh !important;
+  vertical-align: middle;
+}
+
+.dashboard-card-titles {
+  font-size: 10px !important;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}
+
+.sidebar {
+  border-right-width: 0 !important;
+  background-color: #403c3c;
+}
+
+.main-header {
+  background: #a9383c;
+}
+
+.profile-pic span {
+  color: white;
+}
+
+.navbar-header .dropdown-toggle::after {
+  color: white;
+}
+
+.sidebar .sidebar-wrapper{
+  padding-top: 0;
+}
+
+.form-control-xs {
+  height: calc(1em + .375rem + 2px) !important;
+  padding: .125rem .25rem !important;
+  font-size: .75rem !important;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+.filepond--file-info{
+  flex-direction: row !important;
+  pointer-events: all !important;
+  align-items: center !important;
+  justify-content: start !important;
+}
+
+.form-group label, .form-check label{
+  margin-bottom: 0 !important;
+}
+#main-text{
+  background-color: black;
+  padding-top: 30vh;
+  min-height: 100vh;
+  color: white;
+}
+
+#form{
+  background-color: rgb(254, 31, 0  ,0.1);
+  padding-top: 10vh;
+  min-height: 100vh;
+}
+.logo{
+  width: 250px;
+  height: auto;
+}
