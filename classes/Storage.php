@@ -82,8 +82,11 @@ class Storage {
 
     $this->tempPath = $file['tmp_name'];
     $this->size = filesize($this->tempPath);
-    $this->info = finfo_open(FILEINFO_MIME_TYPE);
-    $this->type = finfo_file($this->info, $this->tempPath);
+    //$this->info = finfo_open(FILEINFO_MIME_TYPE);
+    $this->info = $file["type"];
+    var_dump($this->info);
+    //$this->type = finfo_file($this->info, $this->tempPath);
+    $this->type = $file["type"];
   }
 
   public function validate($rules = []) {

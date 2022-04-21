@@ -76,7 +76,7 @@ else {
             <div class="overview-item overview-item--c4">
               <div class="overview__inner text-center">
                 <div class="overview-box clearfix p-b-15">
-                  <a class="" href="vocabularies.php">
+                  <a class="" href="controlled_vocabularies.php">
                     <div class="icon">
                       <i class="zmdi zmdi-calendar-note"></i>
                     </div>

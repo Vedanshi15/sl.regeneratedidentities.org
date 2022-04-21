@@ -40,7 +40,6 @@
 <script src="assets/js/filepond/filepond-plugin-file-validate-type.js" defer></script>
 <script src="assets/js/filepond/filepond.jquery.js"></script>
 <script src="assets/js/sweetalert.js"></script>
-<script src="assets/js/upload.js"></script>
 <script src="assets/js/search.js"></script>
 
 

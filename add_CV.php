@@ -13,29 +13,31 @@
     $message = "Please try again.";
   }
   if (isset($_POST['submit']) and $_SESSION['role'] == "Super Admin") {
-    $email = $_POST['email'];
+    $cvname = $_POST['cvname'];
     $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $organization = $_POST['organization'];
-    $role = $_POST['role'];
-    $sql = "INSERT INTO users (email, fname, lname, security, Organization) 
-              VALUES ( :email, :fname, :lname, :security, :Organization) ";
+    $msg = $_POST['msg'];
+    $sname = $_POST['sname'];
+    $pname = $_POST['pname'];
+    $tname = $_POST['tname'];
+    $sql = "INSERT INTO ".$tname." (Status, Message, Submitby, Name, Name_-_In_French, Name_-_In_Spanish, Name_-_In_Portuguese) 
+              VALUES (0, :Message, :Submitby, :Name, :Name_-_In_French, :Name_-_In_Spanish, :Name_-_In_Portuguese) ";
     $pst = $conn->prepare($sql);
-    $pst->bindParam(':email', $email);
-    $pst->bindParam(':fname', $fname);
-    $pst->bindParam(':lname', $lname);
-    $pst->bindParam(':security', $role);
-    $pst->bindParam(':Organization', $organization);
+    $pst->bindParam(':Message', $msg);
+    $pst->bindParam(':Submitby', $_SESSION['user_name']);
+    $pst->bindParam(':Name', $cvname);
+    $pst->bindParam(':Name_-_In_French', $fname);
+    $pst->bindParam(':Name_-_In_Spanish', $sname);
+    $pst->bindParam(':Name_-_In_Portuguese', $pname);
     $count = $pst->execute();
     if ($count) {
       $success = true;
 
       //header("Refresh:1;url=index.php");
       //header('Location: index.php');
-      $message = 'User has been added to the system. ';
+      $message = 'CV data has been added to the system. ';
     } else {
       $failure = true;
-      $message = 'Error occured while adding the user.';
+      $message = 'Error occured while adding the CV data.';
     }
   }
   require_once 'header.php';
@@ -52,7 +54,7 @@
       <?php if ($_SESSION['role'] == "Super Admin") {?>
       <div class="card">
         <div class="card-header">
-          <strong>Add User</strong>
+          <strong>Add CV Data</strong>
         </div>
 
         <div class="card-body card-block">
@@ -71,57 +73,59 @@
             </div>
           <?php } ?>
           <form action="" method="post" name="form_user" enctype="multipart/form-data" class="form-horizontal">
-
             <div class="row form-group">
               <div class="col col-md-3">
-                <label for="email" class=" form-control-label">Email</label>
-              </div>
-              <div class="col-12 col-md-9">
-                <input type="text" id="email" name="email" placeholder="Email"
-                       value="<?= isset($email) ? $email : ''; ?>" class="form-control">
+                <input type="hidden" name="id" value="<?= isset($temp['ID']) ? $temp['ID'] : ''; ?>"/>
+                <input type="hidden" name="tname" value="<?= isset($tname) ? $tname : ''; ?>"/>
               </div>
             </div>
 
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="cvname" class=" form-control-label">Name</label>
+              </div>
+              <div class="col-12 col-md-9">
+                <input name="cvname" id="cvname" placeholder="Name"
+                       class="form-control" value="<?= isset($temp['Name']) ? $temp['Name'] : ''; ?>">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="msg" class=" form-control-label">Message</label>
+              </div>
+              <div class="col-12 col-md-9">
+                <input name="msg" id="msg" placeholder="Message"
+                       class="form-control" value="<?= isset($temp['Message']) ? $temp['Message'] : ''; ?>">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="fname" class=" form-control-label">French Name</label>
+              </div>
+              <div class="col-12 col-md-9">
+                <input name="fname" id="fname" placeholder="French Name"
+                       class="form-control" value="<?= isset($temp['Name_-_In_French']) ? $temp['Name_-_In_French'] : ''; ?>">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="sname" class=" form-control-label">Spanish Name</label>
+              </div>
+              <div class="col-12 col-md-9">
+                <input name="sname" id="sname" placeholder="Spanish Name"
+                       class="form-control" value="<?= isset($temp['Name_-_In_Spanish']) ? $temp['Name_-_In_Spanish'] : ''; ?>">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col col-md-3">
+                <label for="pname" class=" form-control-label">Portuguese Name</label>
+              </div>
+              <div class="col-12 col-md-9">
+                <input name="pname" id="pname" placeholder="Portuguese Name"
+                       class="form-control" value="<?= isset($temp['Name_-_In_Portuguese']) ? $temp['Name_-_In_Portuguese'] : ''; ?>">
+              </div>
+            </div>
 
-            <div class="row form-group">
-              <div class="col col-md-3">
-                <label for="fname" class=" form-control-label">First Name</label>
-              </div>
-              <div class="col-12 col-md-9">
-                <input type="text" id="fname" name="fname" placeholder="First Name"
-                       value="<?= isset($fname) ? $fname : ''; ?>" class="form-control">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col col-md-3">
-                <label for="lname" class=" form-control-label">Last Name</label>
-              </div>
-              <div class="col-12 col-md-9">
-                <input type="text" id="lname" name="lname" placeholder="Last Name"
-                       value="<?= isset($lname) ? $lname : ''; ?>" class="form-control">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col col-md-3">
-                <label for="organization" class=" form-control-label">Organization</label>
-              </div>
-              <div class="col-12 col-md-9">
-                <input name="organization" id="organization" placeholder="Organization"
-                       class="form-control" value="<?= isset($organization) ? $organization : ''; ?>">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col col-md-3">
-                <label for="role" class=" form-control-label">Role</label>
-              </div>
-              <div class="col-12 col-md-9">
-                <select id="role" name="role" class="form-control">
-                  <option value="0">Super Admin</option>
-                  <option value="1">Project Director</option>
-                  <option value="2">Archivists/Researcher</option>
-                </select>
-              </div>
-            </div>
 
             <div class="card-footer">
               <button type="submit" name="submit" id="submit"

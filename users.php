@@ -24,6 +24,7 @@
 
   <div class="row">
     <div class="col-md-12">
+      <?php if ($_SESSION['role'] == "Super Admin") {?>
       <!-- DATA TABLE -->
       <h3 class="title-5 m-b-35">User List</h3>
       <div class="table-data__tool">
@@ -92,6 +93,11 @@
         </table>
       </div>
       <!-- END DATA TABLE -->
+      <?php } else {?>
+        <div class="alert alert-danger" role="alert">
+          <p><i class="fas fa-ban text-left"></i> Sorry, you don't have access to this page!!</p>
+        </div>
+      <?php } ?>
     </div>
   </div>
 

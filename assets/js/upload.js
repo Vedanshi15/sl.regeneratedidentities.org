@@ -42,7 +42,6 @@ $(function () {
               }
             } catch (e) {
               ok = false;
-              console.log('file error', e);
             }
             if (ok) {
               load(request.responseText);

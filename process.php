@@ -26,10 +26,10 @@
       $title = $_GET['title'];
     }
     if (!$title) {
-      //exit("title not found");
-      $title = 't1';
+      exit("title not found");
+      //$title = 't1';
     }
-    echo "nefnwk";
+    echo $title;
     $uploaded = false;
     $uploaded_id = 0;
 
@@ -54,6 +54,7 @@ echo $ui_id;
       $structuredFile["tmp_name"] = $files["tmp_name"][0];
       $structuredFile["error"] = $files["error"][0];
       $structuredFile["size"] = $files["size"][0];
+      //echo $structuredFile["type"];
     }
 
     if ($structuredFile) {

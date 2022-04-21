@@ -2,7 +2,12 @@
 //session_start();
 //$uid= $_SESSION['user_id'];
 
-require 'db_files/db_config.php';
+  require_once("db_files/db_config.php");
+  $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
+  $records->bindParam(':id', $_SESSION['user_id']);
+  $records->execute();
+  $results = $records->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +80,7 @@ require 'db_files/db_config.php';
               <i class="far fa-upload"></i>Upload Documents</a>
           </li>
           <li>
-            <a href="vocabularies.php">
+            <a href="metatag.php">
               <i class="far fa-dochub"></i>Meta Tag Documents</a>
           </li>
           <li>
@@ -83,7 +88,7 @@ require 'db_files/db_config.php';
               <i class="far fa-search"></i>Search/Filter</a>
           </li>
           <li>
-            <a href="login.php">
+            <a href="controlled_vocabularies.php">
               <i class="far fa-edit"></i>Edit Controlled Vocabularies</a>
           </li>
           <li>
@@ -105,7 +110,7 @@ require 'db_files/db_config.php';
     <div class="menu-sidebar__content js-scrollbar1">
       <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar__list">
-          <li class="active has-sub">
+          <li class="has-sub">
             <a class="js-arrow" href="dashboard.php">
               <i class="fas fa-tachometer-alt"></i>Dashboard</a>
 
@@ -123,7 +128,7 @@ require 'db_files/db_config.php';
               <i class="fas fa-search"></i>Search/Filter</a>
           </li>
           <li>
-            <a href="vocabularies.php">
+            <a href="controlled_vocabularies.php">
               <i class="far fa-edit"></i>Edit Controlled Vocabularies </a>
           </li>
           <li>
@@ -149,7 +154,7 @@ require 'db_files/db_config.php';
               <div class="account-wrap">
                 <div class="account-item clearfix js-item-menu">
                   <div class="image">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="John Doe" />
+                    <img src="assets/img/users/<?php echo $results['img'] ? $results['img'] : 'NA.jpg';?>" alt="User Image" />
                   </div>
                   <div class="content">
                     <a class="js-acc-btn" href="#"><?php echo empty($_SESSION['name']) ? $_SESSION['email'] : $_SESSION['name']; ?></a>
@@ -158,7 +163,7 @@ require 'db_files/db_config.php';
                     <div class="info clearfix">
                       <div class="image">
                         <a href="#">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="John Doe" />
+                          <img src="assets/img/users/<?php echo $results['img'] ? $results['img'] : 'NA.jpg';?>" alt="User Image" />
                         </a>
                       </div>
                       <div class="content">

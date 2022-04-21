@@ -12,64 +12,6 @@
   }
   if (isset($_POST['replace_file'])) {
     $id = $_POST['id'];
-    $mimeTypes = array(
-      'text/plain' => 'txt',
-      'text/html' => 'htm',
-      'text/html' => 'html',
-      'text/html' => 'php',
-      'text/css' => 'css',
-      'application/javascript' => 'js',
-      'application/json' => 'json',
-      'application/xml' => 'xml',
-      'application/x-shockwave-flash' => 'swf',
-      'video/x-flv' => 'flv',
-
-      // images
-      'image/png' => 'png',
-      'image/jpeg' => 'jpe',
-      'image/jpeg' => 'jpeg',
-      'image/jpeg' => 'jpg',
-      'image/gif' => 'gif',
-      'image/bmp' => 'bmp',
-      'image/vnd.microsoft.icon' => 'ico',
-      'image/tiff' => 'tiff',
-      'image/tiff' => 'tif',
-      'image/svg+xml' => 'svg',
-      'image/svg+xml' => 'svgz',
-
-      // archives
-      'application/zip' => 'zip',
-      'application/x-rar-compressed' => 'rar',
-      'application/x-msdownload' => 'exe',
-      'application/x-msdownload' => 'msi',
-      'application/vnd.ms-cab-compressed' => 'cab',
-
-      // audio/video
-      'audio/mpeg' => 'mp3',
-      'video/quicktime' => 'qt',
-      'video/quicktime' => 'mov',
-
-      // adobe
-      'application/pdf' => 'pdf',
-      'image/vnd.adobe.photoshop' => 'psd',
-      'application/postscript' => 'ai',
-      'application/postscript' => 'eps',
-      'application/postscript' => 'ps',
-
-      // ms office
-      'application/msword' => 'doc',
-      'application/rtf' => 'rtf',
-      'application/vnd.ms-excel' => 'xls',
-      'application/vnd.ms-powerpoint' => 'ppt',
-      'application/msword' => 'docx',
-      'application/vnd.ms-excel' => 'xlsx',
-      'application/vnd.ms-powerpoint' => 'pptx',
-
-
-      // open office
-      'application/vnd.oasis.opendocument.text' => 'odt',
-      'application/vnd.oasis.opendocument.spreadsheet' => 'ods',
-    );
     $result = null;
     $query = $conn->query("SELECT * FROM `object` WHERE objectID = " . $id);
     if ($query) {
@@ -80,6 +22,7 @@
       $size = filesize($tempPath);
       $info = finfo_open(FILEINFO_MIME_TYPE);
       $type = finfo_file($info, $tempPath);
+      var_dump($info);
       $temp = null;
       $rules = [
         "type" => ["image/jpeg", "image/png", "image/tiff", "application/pdf"]
