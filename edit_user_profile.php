@@ -5,6 +5,8 @@
   }
   require_once 'header.php';
   require_once("db_files/db_config.php");
+  $success = false;
+  $failure = false;
   if (isset($_POST['submit'])) {
     $id = $_SESSION['user_id'];
     $email = $_POST['email'];
@@ -81,7 +83,6 @@
       {
         $user_image='';
       }
-      //mysqli_query($con,"INSERT INTO `product_mst`(`product_name`, `product_category_id`, `product_desc`, `ingridience`, `product_mrp`, `product_qty`, `product_image`, `how_to_use`, `flag`) VALUES ('".$product_name."','".$product_category_id."','".$product_desc."','".$ingridience."','".$product_mrp."','".$product_qty."','".$product_image."','".$how_to_use."','1')");
     }
 
 
@@ -90,17 +91,11 @@
 
 
     if ($count) {
-      echo '<script type="text/javascript">
-			$(document).ready(function(){
-				$("#success-dialog").modal("show");
-			});
-				</script>';
+      $success = true;
+      $message = 'Successfully updated the profile!';
     } else {
-      echo '<script type="text/javascript">
-			$(document).ready(function(){
-				$("#error-dialog").modal("show");
-			});
-				</script>';
+      $failure = true;
+      $message = 'Error! Something went wrong, Please try again . ';
     }
   }
   $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
@@ -142,6 +137,17 @@
         <div class="col-lg-8">
           <div class="card">
             <div class="card-body">
+              <?php if ($failure) { ?>
+                <div class="alert alert-danger" role="alert">
+                  <?php echo $message; ?>
+                </div>
+              <?php } ?>
+              <?php if ($success) { ?>
+                <div class="alert alert-success" role="alert">
+                  <?php echo $message; ?>
+
+                </div>
+              <?php } ?>
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="row mb-3">
                   <div class="col-sm-3">
@@ -149,7 +155,7 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" name="fname" id="fname" class="form-control"
-                           value="<?php echo $results['fname'] ?>">
+                           value="<?= $results['fname'] ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -158,7 +164,7 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" name="lname" id="lname" class="form-control"
-                           value="<?php echo $results['lname'] ?>">
+                           value="<?= $results['lname'] ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -167,7 +173,7 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" id="email" name="email" class="form-control"
-                           value="<?php echo $results['email'] ?>">
+                           value="<?= $results['email'] ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -176,7 +182,7 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     <input type="text" name="organization" id="organization" class="form-control"
-                           value="<?php echo $results['Organization'] ?>">
+                           value="<?= $results['Organization'] ?>">
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -184,7 +190,7 @@
                     <h6 class="mb-0">Image</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="file" name="user_image" id="user_image" class="form-control" value="<?php echo $results['img'] ?>"/>
+                    <input type="file" name="user_image" id="user_image" class="form-control" value="<?= $results['img'] ?>"/>
 
                   </div>
                 </div>
@@ -192,54 +198,8 @@
                 <div class="row">
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="submit" name="submit" id="submit" data-toggle="modal" class="btn btn-primary px-4"
+                    <input type="submit" name="submit" id="submit" class="btn btn-primary px-4"
                            value="Save Changes">
-                  </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="success-dialog" tabindex="-1" role="dialog" data-backdrop="false"
-                     aria-labelledby="success-dialog" aria-hidden="true">
-                  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-                    <div class="modal-content  bg-success">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Data Updated</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body text-dark">
-                        <p>User profile has been updated!</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" onclick="location.href = 'user_profile.php';"
-                                class="btn bg-dark text-white"
-                                data-dismiss="modal">Close
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="error-dialog" tabindex="-1" role="dialog" data-backdrop="false"
-                     aria-labelledby="error-dialog" aria-hidden="true">
-                  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-                    <div class="modal-content  bg-danger">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body text-dark">
-                        <p>Sorry, there is an error in updating!</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" onclick="location.href = 'user_profile.php';"
-                                class="btn bg-dark text-white"
-                                data-dismiss="modal">Close
-                        </button>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </form>

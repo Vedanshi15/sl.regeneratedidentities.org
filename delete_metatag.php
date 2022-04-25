@@ -15,9 +15,17 @@
     $sql = "DELETE FROM `object` where objectID = " . $id;
     $count = $conn->exec($sql);
     if ($count) {
-      header("Location: metatag.php");
+      echo '<script type="text/javascript">
+			$(document).ready(function(){
+				$("#success-dialog").modal("show");
+			});
+				</script>';
     } else {
-      echo " Error in deleting!!";
+      echo '<script type="text/javascript">
+			$(document).ready(function(){
+				$("#error-dialog").modal("show");
+			});
+				</script>';
     }
   }
   if (isset($_POST['close'])) {
@@ -45,7 +53,7 @@
           </div>
         </div>
         <input type="hidden" name="id" value="<?= $temp['objectID']; ?>"/>
-        <a href="<?php echo $temp['File'] ?>"><?php echo $temp['File'] ?></a>
+        <a href="<?= $temp['File'] ?>"><?= $temp['File'] ?></a>
         <!-- Modal -->
         <div class="modal fade" id="success-dialog" tabindex="-1" role="dialog" data-backdrop="false"
              aria-labelledby="success-dialog" aria-hidden="true">

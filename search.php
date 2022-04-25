@@ -107,7 +107,7 @@
             </div>
             <div id="pageSearchMenu" class="row">
               <div class="col-12 text-right">
-                <a href="advance_search.php " class="btn btn-dark mb-3" style="padding-left:30px; padding-right:30px;"><i
+                <a href="advance_search.php " class="btn overview-item--c1 mb-3 text-white" style="padding-left:30px; padding-right:30px;"><i
                     class="fas fa-search-plus"></i> Advanced Search</a>
               </div>
             </div>

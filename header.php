@@ -58,7 +58,7 @@
       <div class="container-fluid">
         <div class="header-mobile-inner">
           <a class="logo" href="index.php">
-            <img src="#" alt="Sierra Leone Public Archives"/>
+            <img src="assets/img/logo1.jpeg" alt="Sierra Leone Public Archives"/>
           </a>
           <button class="hamburger hamburger--slider" type="button">
             <span class="hamburger-box">
@@ -103,8 +103,8 @@
   <!-- MENU SIDEBAR-->
   <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-      <a href="index.php">
-        <img src="#" alt="Sierra Leone Public Archives"/>
+      <a href="dashboard.php">
+        <img src="assets/img/logo1.jpeg" alt="Sierra Leone Public Archives"/>
       </a>
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
@@ -177,10 +177,6 @@
                       <div class="account-dropdown__item">
                         <a href="user_profile.php">
                           <i class="zmdi zmdi-account"></i>Account</a>
-                      </div>
-                      <div class="account-dropdown__item">
-                        <a href="#">
-                          <i class="zmdi zmdi-settings"></i>Setting</a>
                       </div>
                     </div>
                     <div class="account-dropdown__footer">

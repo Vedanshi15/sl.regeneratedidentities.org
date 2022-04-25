@@ -41,7 +41,7 @@ else {
           </div>
 
           <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c3">
+            <div class="overview-item overview-item--c1">
               <div class="overview__inner text-center">
                 <div class="overview-box clearfix p-b-15">
                   <a class="" href="metatag.php">
@@ -57,7 +57,7 @@ else {
             </div>
           </div>
           <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c4">
+            <div class="overview-item overview-item--c1">
               <div class="overview__inner text-center">
                 <div class="overview-box clearfix p-b-15">
                   <a class="" href="search.php">
@@ -73,7 +73,7 @@ else {
             </div>
           </div>
           <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c4">
+            <div class="overview-item overview-item--c1">
               <div class="overview__inner text-center">
                 <div class="overview-box clearfix p-b-15">
                   <a class="" href="controlled_vocabularies.php">
@@ -89,7 +89,7 @@ else {
             </div>
           </div>
           <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c4">
+            <div class="overview-item overview-item--c1">
               <div class="overview__inner text-center">
                 <div class="overview-box clearfix p-b-15">
                   <a class="" href="users.php">

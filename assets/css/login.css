@@ -70,7 +70,7 @@ a, a:visited, a:hover, a:active {
 }
 #main-text{
   background-color: black;
-  padding-top: 30vh;
+  padding-top: 20vh;
   min-height: 100vh;
   color: white;
 }
@@ -80,7 +80,9 @@ a, a:visited, a:hover, a:active {
   padding-top: 10vh;
   min-height: 100vh;
 }
-.logo{
+#btn{
+}
+.logoi{
   width: 250px;
   height: auto;
 }

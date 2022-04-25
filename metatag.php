@@ -123,14 +123,6 @@
                        title="Preview File">
                       <i class="zmdi zmdi-more"></i>
                     </a>
-
-                    <form action="" method="post" enctype="multipart/form-data">
-                      <input type="hidden" name="id" value="<?php echo $temp['objectID'] ?>"/>
-                      <button class="item mr-2" name="replace_file" data-toggle="tooltip" data-placement="top"
-                              title="Replace File">
-                        <i class="zmdi zmdi-search-replace"></i>
-                      </button>
-                    </form>
                     <form action="edit_metatag.php" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="id" value="<?php echo $temp['objectID']; ?>"/>
                       <button class="item mr-2" name="edit_metatag" data-toggle="tooltip" data-placement="top"

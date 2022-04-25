@@ -7,9 +7,6 @@
   require_once("db_files/db_config.php");
   $success = false;
   $failure = false;
-  if (isset($_GET['message'])) {
-    $message = "Invalid Credentials! Please try again.";
-  }
   if (isset($_POST['submit'])) {
     var_dump($_POST);
     foreach ($_FILES["file"]["tmp_name"] as $key => $tmp_name) {
@@ -77,7 +74,7 @@
                 <button class="btn btn-danger" id="resetFileForm">
                   <i class="zmdi zmdi-format-clear-all"></i> Clear
                 </button>
-                <input class="btn btn-success" name='submit' value="Start Uploading" type="submit">
+                <input class="btn btn-primary" name='submit' value="Start Uploading" type="submit">
             </div>
           </div>
           <?php if ($failure) { ?>
@@ -95,7 +92,7 @@
 
             <input type="file" name="file[]" id="file" multiple hidden>
           </div>
-          <div class="overview-item overview-item--c4">
+          <div class="overview-item overview-item--c1">
             <div class="overview__inner text-center">
               <div class="overview-box clearfix p-b-15">
 
@@ -107,7 +104,7 @@
                     </div>
                   </label>
                 </div>
-                <span id="file-chosen"></span>
+                <span id="file-chosen" class="text-white"></span>
               </div>
             </div>
           </div>
@@ -119,17 +116,7 @@
         </div>
       </div>
       <script>
-          const actualBtn = document.getElementById('file');
 
-          const fileChosen = document.getElementById('file-chosen');
-          var temp;
-          actualBtn.addEventListener('change', function () {
-              for (i = 0; i < this.files.length; i++) {
-                  fileChosen.innerHTML += this.files[i].name + '<br/>';
-
-              }
-
-          })
       </script>
 
       <?php require_once 'footer.php' ?>

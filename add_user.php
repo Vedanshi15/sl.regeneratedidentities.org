@@ -9,10 +9,7 @@
   $success = false;
   $failure = false;
   $message = '';
-  if (isset($_GET['message'])) {
-    $message = "Please try again.";
-  }
-  if (isset($_POST['submit']) and $_SESSION['role'] == "Super Admin") {
+    if (isset($_POST['submit']) and $_SESSION['role'] == "Super Admin") {
     $email = $_POST['email'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -64,10 +61,6 @@
           <?php if ($success) { ?>
             <div class="alert alert-success" role="alert">
               <?php echo $message; ?>
-              <script type="text/javascript">
-                  const url = "add_user.php";
-                  window.location.href=url;
-              </script>
             </div>
           <?php } ?>
           <form action="" method="post" name="form_user" enctype="multipart/form-data" class="form-horizontal">
@@ -131,29 +124,6 @@
               <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> Reset
               </button>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="success-dialog" tabindex="-1" role="dialog" aria-labelledby="success-dialog"
-                 aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">User Added</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p> User has been added to the system.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" onclick="location.href = 'users.php';" class="btn btn-secondary"
-                            data-dismiss="modal">Close
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
         </div>
         <?php } else {?>

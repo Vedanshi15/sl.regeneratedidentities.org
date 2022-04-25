@@ -111,8 +111,8 @@ endif;
                 </script>
               </div>
             <?php } ?>
+            <h2 class="text-center">Login</h2>
             <form action="index.php" method="POST" class="p-3 col-lg-10 col-md-12 col-sm-12 mx-auto">
-              <center><img src="#" class="logo img-fluid pb-2" alt="Sierra Leone Public Archives Logo"></center>
               <div class="form-group mt-5">
                 <label>Email Address</label>
                 <input type="email" class="form-control" name="email" placeholder="User Name">
@@ -121,7 +121,7 @@ endif;
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
-              <button type="submit" class="btn btn-success col-4">Login</button>
+              <button type="submit" class="btn btn-success col-4" id="btn">Login</button>
 
             </form>
 
@@ -129,11 +129,14 @@ endif;
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="main-text">
+        <center><img src="assets/img/logo.jpeg" class="logoi img-fluid pb-2 " alt="Sierra Leone Public Archives Logo">
         <div class="p-5">
+
           <h1 class="text-white">Sierra Leone Public Archives</h1>
           <h2 class="text-white pb-2"> Login </h2>
           <p><i>- Powered by Regenerated Identities secured Gateway</i></p>
         </div>
+        </center>
       </div>
     </div>
 </section>

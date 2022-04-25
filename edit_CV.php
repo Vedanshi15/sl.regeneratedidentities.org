@@ -24,7 +24,7 @@
     $pname = $_POST['pname'];
     $tname = $_POST['tname'];
     if (isset($_POST['status'])) {
-      $sql = "Update " . $tname ." set
+      $sql = "Update" . $tname ."set
       			Name = :Name,
                 Name_-_In_French = :Name_-_In_French,
                 Name_-_In_Spanish = :Name_-_In_Spanish,
@@ -34,7 +34,7 @@
 
     }
 
-    $sql = "UPDATE " . $tname ." set
+    $sql = "UPDATE $tname set
       			Name = :Name,
                 Name_-_In_French = :Name_-_In_French,
                 Name_-_In_Spanish = :Name_-_In_Spanish,
@@ -43,10 +43,15 @@
     var_dump($sql);
 
     $pst = $conn->prepare($sql);
+    var_dump(':Name', $cvname);
     $pst->bindParam(':Name', $cvname);
+    var_dump(':Name_-_In_French', $fname);
     $pst->bindParam(':Name_-_In_French', $fname);
+    var_dump(':Name_-_In_Spanish', $sname);
     $pst->bindParam(':Name_-_In_Spanish', $sname);
+    var_dump(':Name_-_In_Portuguese', $pname);
     $pst->bindParam(':Name_-_In_Portuguese', $pname);
+    var_dump(':ID', $id);
     $pst->bindParam(':ID', $id);
 
     if (isset($_POST['status'])) {
@@ -84,8 +89,8 @@
               <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                 <div class="row form-group">
                   <div class="col col-md-3">
-                    <input type="hidden" name="id" value="<?php echo $temp['ID']; ?>"/>
-                    <input type="hidden" name="tname" value="<?php echo $tname; ?>"/>
+                    <input type="hidden" name="id" value="<?= $temp['ID']; ?>"/>
+                    <input type="hidden" name="tname" value="<?= $tname; ?>"/>
                   </div>
                 </div>
 
@@ -95,7 +100,7 @@
                   </div>
                   <div class="col-12 col-md-9">
                     <input name="cvname" id="cvname" placeholder="Name"
-                           class="form-control" value="<?php echo $temp['Name']; ?>">
+                           class="form-control" value="<?= $temp['Name']; ?>">
                   </div>
                 </div>
                 <div class="row form-group">
@@ -104,7 +109,7 @@
                   </div>
                   <div class="col-12 col-md-9">
                     <input name="fname" id="fname" placeholder="French Name"
-                           class="form-control" value="<?php  echo $temp['Name_-_In_French']; ?>">
+                           class="form-control" value="<?= $temp['Name_-_In_French']; ?>">
                   </div>
                 </div>
                 <div class="row form-group">
@@ -113,7 +118,7 @@
                   </div>
                   <div class="col-12 col-md-9">
                     <input name="sname" id="sname" placeholder="Spanish Name"
-                           class="form-control" value="<?php  echo $temp['Name_-_In_Spanish']; ?>">
+                           class="form-control" value="<?= $temp['Name_-_In_Spanish']; ?>">
                   </div>
                 </div>
                 <div class="row form-group">
@@ -122,7 +127,7 @@
                   </div>
                   <div class="col-12 col-md-9">
                     <input name="pname" id="pname" placeholder="Portuguese Name"
-                           class="form-control" value="<?php  echo $temp['Name_-_In_Portuguese']; ?>">
+                           class="form-control" value="<?= $temp['Name_-_In_Portuguese']; ?>">
                   </div>
                 </div>
                 <?php if($role == 'Project Director'){?>
@@ -144,7 +149,7 @@
                             $stn = " ";
                           }
                         ?>
-                        <option value="<?php echo $stn; ?>" selected><?php echo $st; ?></option>
+                        <option value="<?= $stn; ?>" selected><?= $st; ?></option>
                         <option value="0">Pending</option>
                         <option value="1">Approved</option>
                       </select>

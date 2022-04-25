@@ -5,6 +5,8 @@
   }
   require_once 'header.php';
   require_once("db_files/db_config.php");
+  $success = false;
+  $failure = false;
   $email = $fname = $lname = $role = $organization = "";
   if (isset($_SESSION['user_id']) && $_SESSION['role'] = "Super Admin") {
     if (isset($_POST['update_user'])) {
@@ -44,17 +46,11 @@
 
 
       if ($count) {
-        echo '<script type="text/javascript">
-			$(document).ready(function(){
-				$("#success-dialog").modal("show");
-			});
-				</script>';
+        $success = true;
+        $message = 'Successfully updated the user data!';
       } else {
-        echo '<script type="text/javascript">
-			$(document).ready(function(){
-				$("#error-dialog").modal("show");
-			});
-				</script>';
+        $failure = true;
+        $message = 'Error! Something went wrong, Please try again . ';
       }
     }
   } else {
@@ -74,6 +70,17 @@
           <strong>Update User</strong>
         </div>
         <div class="card-body card-block">
+          <?php if ($failure) { ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $message; ?>
+            </div>
+          <?php } ?>
+          <?php if ($success) { ?>
+            <div class="alert alert-success" role="alert">
+              <?php echo $message; ?>
+
+            </div>
+          <?php } ?>
           <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             <div class="row form-group">
               <div class="col col-md-3">
@@ -141,7 +148,6 @@
                   <option value="1">Project Director</option>
                   <option value="2">Archivists/Researcher</option>
                 </select>
-                <small class="form-text text-muted">Print Error</small>
               </div>
             </div>
 
@@ -153,50 +159,6 @@
               <button type="reset" class="btn btn-danger btn-sm">
                 <i class="fa fa-ban"></i> Reset
               </button>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="success-dialog" tabindex="-1" role="dialog" data-backdrop="false"
-                 aria-labelledby="success-dialog" aria-hidden="true">
-              <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-                <div class="modal-content  bg-success">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">User Data Updated</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body text-dark">
-                    <p>User data has been updated!</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" onclick="location.href = 'users.php';" class="btn bg-dark text-white"
-                            data-dismiss="modal">Close
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="error-dialog" tabindex="-1" role="dialog" data-backdrop="false"
-                 aria-labelledby="error-dialog" aria-hidden="true">
-              <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-                <div class="modal-content  bg-danger">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Error</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body text-dark">
-                    <p>Sorry, there is an error in updating!</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" onclick="location.href = 'users.php';" class="btn bg-dark text-white"
-                            data-dismiss="modal">Close
-                    </button>
-                  </div>
-                </div>
-              </div>
             </div>
 
         </div>

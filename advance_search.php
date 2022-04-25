@@ -38,7 +38,7 @@
             <div class="row">
               <div class="col-12 text-left">
                 <a href="search.php" class="btn btn-light mt-2 mb-2"><i class="fas fa-arrow-left"></i> Back</a>
-                <a id="restartSearch" href="advance_search.php" class="btn btn-dark mt-2 mb-2"><i class="fas fa-sync-alt"></i>Refresh Page</a>
+                <a id="restartSearch" href="advance_search.php" class="btn btn-dark mt-2 mb-2 ml-2 text-white" style="display: none;"><i class="fas fa-sync-alt"></i>Refresh Page</a>
               </div>
             </div>
             <div id="pageEnd">
@@ -152,7 +152,7 @@
                     <div class="row">
                       <div class="col-12 text-right">
                         <a href="advance_search.php" class="btn btn-light mt-2 mb-2"><i class="fas fa-sync-alt"></i>Refresh Page</a>
-                        <button type="submit" class="filter-btn btn btn-secondary mt-2 mb-2" style="margin-left:15px;padding-left:30px; padding-right:30px;">Search</button>
+                        <button type="submit" class="filter-btn btn btn-success mt-2 mb-2" style="margin-left:15px;padding-left:30px; padding-right:30px;">Search</button>
                       </div>
                     </div>
                   </form>
