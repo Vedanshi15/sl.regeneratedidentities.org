@@ -117,10 +117,10 @@
           <!--<button type="submit" formmethod="post">Submit using POST</button>-->
           <form action="search.php" method="GET">
             <div class="row p-t-10">
-              <div class="col-12 col-md-6 col-lg-6">
+              <div class="col-12 col-md-6 col-lg-4">
                 <!--Column Name Select-->
                 <div class="form-group mb-3">
-                  <label class="sLabels text-uppercase" for="colName">Select the column to search where:</label>
+                  <label class="sLabels text-uppercase" for="colName">Select the Column:</label>
                   <div id="search-autocomplete" class="select-container">
                     <select id="colName" name="colName" class="form-select form-select-lg mb-3 mt-2 form-control select2" aria-label=".form-select-lg">
                       <!--<option selected>Select Fields...</option>-->
@@ -138,10 +138,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-6">
+              <div class="col-12 col-md-6 col-lg-3">
                 <!--Query Condition Select-->
                 <div class="form-group mb-3">
-                  <label class="sLabels text-uppercase" for="cond">Select the search condition:</label>
+                  <label class="sLabels text-uppercase" for="cond">Select condition:</label>
                   <div class="select-container">
                     <select id="SelectID" name="cond" class="form-select form-select-lg mb-3 mt-2 form-control"
                             aria-label=".form-select-lg">
@@ -159,10 +159,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-12 mt-3">
+              <div class="col-12 col-lg-5">
                 <!--Search Terms Select-->
                 <div class="form-group">
-                  <label class="sLabels text-uppercase" for="sTerm">Enter search term:</label>
+                  <label class="sLabels text-uppercase" for="sTerm">Enter term:</label>
                   <div class="input-group mt-2 mb-3">
                     <!--Search Term entry box-->
                     <input id="sTermTxt" name="sTerm" type="text" class="form-control" placeholder="Search term here..." aria-hidden="false">
@@ -335,14 +335,6 @@
                                title="Preview File">
                               <i class="zmdi zmdi-more"></i>
                             </a>
-
-                            <form action="" method="post" enctype="multipart/form-data">
-                              <input type="hidden" name="id" value="<?php echo $temp['objectID'] ?>"/>
-                              <button class="item mr-2" name="replace_file" data-toggle="tooltip" data-placement="top"
-                                      title="Replace File">
-                                <i class="zmdi zmdi-search-replace"></i>
-                              </button>
-                            </form>
                             <form action="edit_metatag.php" method="post" enctype="multipart/form-data">
                               <input type="hidden" name="id" value="<?php echo $temp['objectID']; ?>"/>
                               <button class="item mr-2" name="edit_metatag" data-toggle="tooltip" data-placement="top"

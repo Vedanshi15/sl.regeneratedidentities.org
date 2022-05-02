@@ -30,7 +30,7 @@
                 Name_-_In_Spanish = :Name_-_In_Spanish,
                 Name_-_In_Portuguese = :Name_-_In_Portuguese,
                 Status = :Status          
-                WHERE ID = :id ";
+                WHERE ID = :ID ";
 
     }
 
@@ -52,7 +52,7 @@
     var_dump(':Name_-_In_Portuguese', $pname);
     $pst->bindParam(':Name_-_In_Portuguese', $pname);
     var_dump(':ID', $id);
-    $pst->bindParam(':ID', $id);
+    $pst->bindParam(':ID', $id, PDO::PARAM_INT);
 
     if (isset($_POST['status'])) {
       $pst->bindParam(':Status', $_POST['status']);
